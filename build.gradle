@@ -36,3 +36,12 @@ jar {
 	//archiveName속성을 지정하면 baseName속성이나 appendix속성은 무시된다.
 	dependsOn configurations.runtime //실행 가능한 jar파일 생성
 }
+
+sourceSets { //fxml파일을 빌드하도록 설정
+	main {
+		resources {
+			srcDirs = ["src/main/java"]
+			includes = ["**/*.fxml"]
+		}
+	}
+}
