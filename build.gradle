@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 tasks.withType(JavaCompile){
 	options.encoding = 'UTF-8'
@@ -23,3 +24,15 @@ dependencies {
 	compile group: 'log4j', name: 'log4j', version: '1.2.17'
 }
 
+jar {
+	mainClassName = 'kr.or.dgit.sw_erp_luuzun.main.MainApp'
+	baseName = 'SoftWareERPApp'
+	appendix = 'bin'
+	version = 1.0
+	manifest{ 
+		attributes 'Title':baseName, 'Version': version, 'MainApp' : mainClassName
+	}
+	//archiveName 'SoftWareManager.jar' 
+	//archiveName속성을 지정하면 baseName속성이나 appendix속성은 무시된다.
+	dependsOn configurations.runtime //실행 가능한 jar파일 생성
+}
