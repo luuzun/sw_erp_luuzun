@@ -55,14 +55,19 @@
                         <TextField fx:id="sellingAmountTf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <ComboBox fx:id="clntNameCb" prefWidth="150.0" GridPane.columnIndex="3" />
                         <ComboBox fx:id="swNameCb" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefWidth="60.0" text="입력" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                        <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="60.0" text="입력" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets top="20.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="60.0" text="취소" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                        <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="60.0" text="취소" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="70.0" top="20.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#handleDeleteSales" prefWidth="60.0" text="삭제" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="140.0" top="20.0" />
                            </GridPane.margin>
                         </Button>
                      </children>

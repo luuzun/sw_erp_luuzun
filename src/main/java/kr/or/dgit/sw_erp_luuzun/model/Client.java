@@ -9,10 +9,16 @@ public class Client {
 	private StringProperty clntAddr;
 	private StringProperty clntTel;
 	
+	// For Test
+	public Client(String clntName) {
+		this(null,clntName,null,null);
+	}
+	
+	// For Test
 	public Client(String clntNo, String clntName) {
 		this(clntNo,clntName,null,null);
 	}
-
+	
 	public Client(String clntNo, String clntName, String clntAddr, String clntTel) {
 		this.clntNo = new SimpleStringProperty(clntNo);
 		this.clntName = new SimpleStringProperty(clntName);

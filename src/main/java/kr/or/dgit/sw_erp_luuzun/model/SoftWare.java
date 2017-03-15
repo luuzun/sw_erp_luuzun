@@ -13,10 +13,16 @@ public class SoftWare {
 	private IntegerProperty swPrice;
 	private StringProperty supplyComp;
 	
+	// For Test
 	public SoftWare(String swNo, String swName) {
 		this(swNo, null, swName, 0, 0, null);
 	}
-
+	
+	// For Test
+	public SoftWare(String swName) {
+		this(null, null, swName, 0, 0, null);
+	}
+	
 	public SoftWare(String swNo, String swGroup, String swName, int swSupplyPrice,
 			int swPrice, String supplyComp) {
 		this.swNo = new SimpleStringProperty(swNo);
