@@ -49,12 +49,12 @@
                         <Label text="고객상호명" textAlignment="CENTER" GridPane.columnIndex="2" />
                         <Label text="품목명" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Label text="입금여부" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <ComboBox prefWidth="150.0" GridPane.columnIndex="3" />
-                        <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="isDepositCh" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="orderDateDp" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="saleNoTf" GridPane.columnIndex="1" />
+                        <TextField fx:id="sellingAmountTf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="clntNameCb" prefWidth="150.0" GridPane.columnIndex="3" />
+                        <ComboBox fx:id="swNameCb" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" prefWidth="60.0" text="입력" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets top="20.0" />

@@ -4,10 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Client {
-	private final StringProperty clntNo;
-	private final StringProperty clntName;
-	private final StringProperty clntAddr;
-	private final StringProperty clntTel;
+	private StringProperty clntNo;
+	private StringProperty clntName;
+	private StringProperty clntAddr;
+	private StringProperty clntTel;
 	
 	public Client(String clntNo, String clntName) {
 		this(clntNo,clntName,null,null);
@@ -23,5 +23,49 @@ public class Client {
 	@Override
 	public String toString() {
 		return String.format("%s", clntName.get());
+	}
+	
+	//
+	public String getClntNo() {
+		return clntNo.get();
+	}
+	public StringProperty ClntNoProperty() {
+		return clntNo;
+	}
+	public void setClntNo(String clntNo) {
+		this.clntNo.set(clntNo);
+	}
+	
+	//
+	public String getClntName() {
+		return clntName.get();
+	}
+	public StringProperty ClntNameProperty() {
+		return clntName;
+	}
+	public void setClntName(String clntName) {
+		this.clntName.set(clntName);
+	}
+	
+	//
+	public String getClntAddr() {
+		return clntAddr.get();
+	}
+	public StringProperty ClntAddrProperty() {
+		return clntAddr;
+	}
+	public void setClntAddr(String clntAddr) {
+		this.clntAddr.set(clntAddr);
+	}
+
+	//
+	public String getClntTel() {
+		return clntTel.get();
+	}
+	public StringProperty ClntTelProperty() {
+		return clntTel;
+	}
+	public void setClntTel(String clntTel) {
+		this.clntTel.set(clntTel);
 	}
 }

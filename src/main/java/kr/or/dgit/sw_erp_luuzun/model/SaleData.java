@@ -44,11 +44,11 @@ public class SaleData {
 	public String getSaleNo() {
 		return saleNo.get();
 	}
-	public void setSaleNo(String saleNo) {
-		this.saleNo.set(saleNo);
-	}
 	public StringProperty SaleNoProperty(){
 		return saleNo;
+	}
+	public void setSaleNo(String saleNo) {
+		this.saleNo.set(saleNo);
 	}
 	
 	//
