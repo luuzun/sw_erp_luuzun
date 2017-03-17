@@ -9,11 +9,11 @@
 	</settings>
 	
 	<typeAliases>
-		<package name=""/>
+		<package name="kr.or.dgit.sw_erp_luuzun.model"/>
 	</typeAliases>
 	
 	<typeHandlers>
-		<package name=""/>
+		<package name="kr.or.dgit.sw_erp_luuzun.typehandlers"/>
 	</typeHandlers>
 	
 	<environments default="development">
@@ -28,6 +28,6 @@
 		</environment>
 	</environments>
 	<mappers>
-			<package name=""/>
+			<package name="kr.or.dgit.sw_erp_luuzun.dao"/>
 	</mappers>
 </configuration>

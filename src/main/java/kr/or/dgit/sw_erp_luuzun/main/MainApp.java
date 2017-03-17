@@ -1,7 +1,5 @@
 package kr.or.dgit.sw_erp_luuzun.main;
 
-import javax.swing.JOptionPane;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import kr.or.dgit.sw_erp_luuzun.view.ViewSales;

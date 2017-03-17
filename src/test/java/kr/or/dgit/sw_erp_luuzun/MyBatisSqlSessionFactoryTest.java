@@ -18,13 +18,12 @@ public class MyBatisSqlSessionFactoryTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		//sqlSessionFactory = null;
+		sqlSessionFactory = null;
 	}
 
 	@Test
 	public void testSqlSession() {
-		//Assert.assertNotNull(sqlSessionFactory.openSession());
-		System.out.println(sqlSessionFactory.openSession());
+		Assert.assertNotNull(sqlSessionFactory.openSession());
 	}
 
 }
