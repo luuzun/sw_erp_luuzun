@@ -26,7 +26,7 @@
     <!-- Select Sales By All   
 		SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate FROM sale s, client c, software sw
 		WHERE s.clntNo = c.clntNo AND s.swNo = sw.swNo ORDER BY saleNo; --> 
-    <select id="selectStudent" parameterType="SaleData" resultType="SaleData">
+    <select id="selectSalesByAll" parameterType="SaleData" resultType="SaleData">
     	<include refid="selectSql" />
     </select>
     
