@@ -1,4 +1,4 @@
-package kr.or.dgit.sw_erp_luuzun.dao;
+package kr.or.dgit.sw_erp_luuzun.mapper;
 
 import java.util.List;
 
@@ -26,25 +26,25 @@ public class SalesMapperImpl implements SalesMapper{
 	@Override
 	public SaleData selectSales(SaleData saleData) {
 		log.debug("selectSales()");
-		return sqlSession.selectOne(nameSpace+".selectSales", saleData);
+		return sqlSession.selectOne(nameSpace+"selectSales", saleData);
 
 	}
 
 	@Override
 	public List<SaleData> selectSalesByAll() {
 		log.debug("selectSalesByAll()");
-		return sqlSession.selectList(nameSpace+".selectSalesByAll");
+		return sqlSession.selectList(nameSpace+"selectSalesByAll");
 	}
 
 	@Override
 	public int updateSales(SaleData saleData) {
 		log.debug("updateSales()");
-		return sqlSession.update(nameSpace+".updateSales", saleData);
+		return sqlSession.update(nameSpace+"updateSales", saleData);
 	}
 
 	@Override
 	public int deleteSales(SaleData saleData) {
 		log.debug("deleteSales()");
-		return sqlSession.delete(nameSpace+".deleteSales", saleData);
+		return sqlSession.delete(nameSpace+"deleteSales", saleData);
 	}
 }

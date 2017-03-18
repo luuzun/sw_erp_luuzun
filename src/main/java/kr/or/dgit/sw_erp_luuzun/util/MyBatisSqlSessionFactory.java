@@ -15,7 +15,10 @@ public class MyBatisSqlSessionFactory {
 		if (sqlSessionFactory==null){
 			InputStream inputStream;
 			try {
+				System.out.println("SqlSessionFactory Created!");
 				inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+				//kr.or.dgit.sw_erp_luuzun\bin\kr\or\dgit\sw_erp_luuzun\ util\MyBatisSqlSessionFactory.java
+				//kr.or.dgit.sw_erp_luuzun\bin\mybatis-config.xml
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			} catch (IOException e) {
 				e.printStackTrace();

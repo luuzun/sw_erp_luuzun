@@ -40,8 +40,8 @@ jar {
 sourceSets { //fxml파일을 빌드하도록 설정
 	main {
 		resources {
-			srcDirs = ["src/main/java"]
-			includes = ["**/*.fxml"]
+			srcDirs = ["src/main/java", "src/main/resources"]
 		}
 	}
+	//src/main/java/kr/or/dgit/sw_erp_luuzun/view/*.fxml
 }

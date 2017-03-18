@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.dgit.sw_erp_luuzun.dao.SalesMapper;
-import kr.or.dgit.sw_erp_luuzun.dao.SalesMapperImpl;
+import kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper;
+import kr.or.dgit.sw_erp_luuzun.mapper.SalesMapperImpl;
 import kr.or.dgit.sw_erp_luuzun.model.SaleData;
 import kr.or.dgit.sw_erp_luuzun.util.MyBatisSqlSessionFactory;
 
 
 public class SalesService {
 
-	public int insertStudent(SaleData saleData) {
+	public int insertSales(SaleData saleData) {
 		int res = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			SalesMapper salesMapper = new SalesMapperImpl(sqlSession);
@@ -22,21 +22,21 @@ public class SalesService {
 		return res;
 	}
 	
-	public SaleData selectStudent(SaleData saleData) {
+	public SaleData selectSales(SaleData saleData) {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			SalesMapper salesMapper = new SalesMapperImpl(sqlSession);
 			return salesMapper.selectSales(saleData);
 		} 
 	}
 	
-	public List<SaleData> selectStudentByAll() {
+	public List<SaleData> selectSalesByAll() {
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			SalesMapper salesMapper = new SalesMapperImpl(sqlSession);
 			return salesMapper.selectSalesByAll();
 		} 
 	}
 	
-	public int updateStudent(SaleData saleData) {
+	public int updateSales(SaleData saleData) {
 		int res = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			SalesMapper salesMapper = new SalesMapperImpl(sqlSession);
@@ -46,7 +46,7 @@ public class SalesService {
 		return res;
 	}
 
-	public int deleteStudent(SaleData saleData) {
+	public int deleteSales(SaleData saleData) {
 		int res = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			SalesMapper salesMapper = new SalesMapperImpl(sqlSession);

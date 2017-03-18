@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="kr.or.dgit.sw_erp_luuzun.dao.SalesMapper">
-	
-	<insert id="insert" parameterType="Student">
-        INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB) 
-        VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
-    </insert>
-	
-	<insert id="insertStudent" parameterType="Student">
-        INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB) 
-        VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
-    </insert>
+	namespace="kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper">
     
+    <!-- Select SQL -->
     <sql id="selectSql">
 		select STUD_ID, NAME, EMAIL, PHONE, DOB from students
 	</sql>
 
+	<!-- Where SQL -->
 	<sql id="whereSql">
 		<where>
 			<if test="studId != null">
@@ -24,41 +16,34 @@
 			</if>
 		</where>
 	</sql>
-    
-    <select id="selectStudent" parameterType="Student" resultType="Student">
-    	select STUD_ID, NAME, EMAIL, PHONE, DOB from students where stud_id=#{studId}
-    	<include refid="selectSql" />
-		<include refid="whereSql" />
-    </select>
-    
-    <select id="select" parameterType="Student" resultType="Student">
-    	select STUD_ID, NAME, EMAIL, PHONE, DOB from students where stud_id=#{studId}
-    	<include refid="selectSql" />
-		<include refid="whereSql" />
-    </select>
-    
-    <select id="selectStudentByAll" resultType="Student">
-    	select STUD_ID, NAME, EMAIL, PHONE, DOB from students
-    	<include refid="selectSql" />
-    </select>
-    <select id="list" resultType="Student">
-    	select STUD_ID, NAME, EMAIL, PHONE, DOB from students
-    	<include refid="selectSql" />
-    </select>
-    
-    <update id="updateStudent" parameterType="Student">
-    	UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, PHONE=#{phone} WHERE STUD_ID=#{studId}
-    </update>
-    
-    <update id="update" parameterType="Student">
-    	UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, PHONE=#{phone} WHERE STUD_ID=#{studId}
-    </update>
-    
-    <delete id="deleteStudent" parameterType="Student">
-    	Delete From Students where  STUD_ID=#{studId}
-    </delete>
 
-    <delete id="delete" parameterType="Student">
+	<!-- Insert Sales -->
+	<insert id="insertSales" parameterType="SaleData">
+        INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB) 
+        VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
+    </insert>
+    
+    <!-- Select Sales By All   
+		SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate FROM sale s, client c, software sw
+		WHERE s.clntNo = c.clntNo AND s.swNo = sw.swNo ORDER BY saleNo; --> 
+    <select id="selectStudent" parameterType="SaleData" resultType="SaleData">
+    	<include refid="selectSql" />
+    </select>
+    
+	<!-- Select Sales By Where-->
+	<select id="select" parameterType="SaleData" resultType="SaleData">
+    	select STUD_ID, NAME, EMAIL, PHONE, DOB from students where stud_id=#{studId}
+    	<include refid="selectSql" />
+		<include refid="whereSql" />
+    </select>
+	
+	<!-- Update Sales -->
+	<update id="updateStudent" parameterType="SaleData">
+    	UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, PHONE=#{phone} WHERE STUD_ID=#{studId}
+    </update>
+	
+	<!-- Delete Sales -->
+	<delete id="deleteStudent" parameterType="SaleData">
     	Delete From Students where  STUD_ID=#{studId}
     </delete>
 </mapper>
