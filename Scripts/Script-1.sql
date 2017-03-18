@@ -111,8 +111,14 @@ SELECT swNo, swGroup, swName, swSupplyPrice, swPrice, compName FROM software, su
 SELECT clntNo, clntName, clntAddr, clntTel FROM client;
 
 -- 판매현황 테이블
-SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate FROM sale s, client c, software sw
-	WHERE s.clntNo = c.clntNo AND s.swNo = sw.swNo ORDER BY saleNo; 
+-- SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate FROM sale s, client c, software sw
+-- 	WHERE s.clntNo = c.clntNo AND s.swNo = sw.swNo ORDER BY saleNo;
+
+-- 판매현황 테이블
+SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate 
+FROM sale s JOIN client c ON s.clntNo = c.clntNo
+			JOIN software sw ON s.swNo = sw.swNo 
+			ORDER BY saleNo; 
 
 -- 고객별 판매현황 조회
 SELECT clntName, swName, sellingAmount, isDeposit, swPrice, 

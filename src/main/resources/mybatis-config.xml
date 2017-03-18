@@ -9,7 +9,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="kr.or.dgit.sw_erp_luuzun.model"/>
+		<package name="kr.or.dgit.sw_erp_luuzun.dto"/>
 	</typeAliases>
 	
 	<typeHandlers>

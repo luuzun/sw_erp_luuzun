@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import kr.or.dgit.sw_erp_luuzun.model.Client;
-import kr.or.dgit.sw_erp_luuzun.model.SaleData;
-import kr.or.dgit.sw_erp_luuzun.model.SoftWare;
+import kr.or.dgit.sw_erp_luuzun.dto.Client;
+import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
+import kr.or.dgit.sw_erp_luuzun.dto.SoftWare;
 
 public class ViewSales{
 	private Stage primaryStage;
@@ -26,11 +26,11 @@ public class ViewSales{
 		showViewSales(); //showTabViewSales
 		
 		//addSampleData
-		getSaleDataList().add(new SaleData("SD001", new Client("C001","이승우"), new SoftWare("SW001","OverWatch"), 120, false, null));
-		getSaleDataList().add(new SaleData("SD002", new Client("C002","이교민"), new SoftWare("SW002","BloodWar"), 70, true, null));
-		getSaleDataList().add(new SaleData("SD003", new Client("C003","김성환"), new SoftWare("SW003","Citizen"), 1, false, null));
-		getSaleDataList().add(new SaleData("SD004", new Client("C004","설동훈"), new SoftWare("SW004","LoL"), 10, true, null));
-		getSaleDataList().add(new SaleData("SD005", new Client("C005","조시은"), new SoftWare("SW005","WarCraft"), 20, true, null));
+		getSaleDataList().add(new SaleData("SD001", "이승우", "OverWatch", 120, false, null));
+		getSaleDataList().add(new SaleData("SD002", "이교민", "BloodWar", 70, true, null));
+		getSaleDataList().add(new SaleData("SD003", "김성환", "Citizen", 1, false, null));
+		getSaleDataList().add(new SaleData("SD004", "설동훈", "LoL", 10, true, null));
+		getSaleDataList().add(new SaleData("SD005", "조시은", "WarCraft", 20, true, null));
 	}
 
 	private void initRootLayout() { //RootLayout

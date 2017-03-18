@@ -1,4 +1,4 @@
-package kr.or.dgit.sw_erp_luuzun.model;
+package kr.or.dgit.sw_erp_luuzun.dto;
 
 import java.time.LocalDate;
 
@@ -13,8 +13,8 @@ import javafx.beans.property.StringProperty;
 
 public class SaleData {
 	private final StringProperty saleNo;
-	private final ObjectProperty<Client> client;
-	private final ObjectProperty<SoftWare> softWare;
+	private final StringProperty clientName;
+	private final StringProperty softWareName;
 	private final IntegerProperty sellingAmount;
 	private final BooleanProperty isDeposit;
 	private final ObjectProperty<LocalDate> orderDate;
@@ -23,21 +23,22 @@ public class SaleData {
 		this(null, null, null, 0, false, null);
 	}
 
-	public SaleData(String saleNo, Client client, SoftWare softWare,
+	public SaleData(String saleNo, String clientName, String softWareName,
 			int sellingAmount, boolean isDeposit, LocalDate orderDate) {
 		
-		this.saleNo = new SimpleStringProperty(saleNo);
-		this.client = new SimpleObjectProperty<Client>(client);
-		this.softWare = new SimpleObjectProperty<SoftWare>(softWare);
-		this.sellingAmount = new SimpleIntegerProperty(sellingAmount);
-		this.isDeposit = new SimpleBooleanProperty(isDeposit);
-		this.orderDate = new SimpleObjectProperty<LocalDate>(orderDate);
+		this.saleNo 		= new SimpleStringProperty(saleNo);
+		this.clientName 	= new SimpleStringProperty(clientName);
+		this.softWareName 	= new SimpleStringProperty(softWareName);
+		this.sellingAmount 	= new SimpleIntegerProperty(sellingAmount);
+		this.isDeposit 		= new SimpleBooleanProperty(isDeposit);
+		this.orderDate 		= new SimpleObjectProperty<LocalDate>(orderDate);
 	}
 
 	@Override
 	public String toString() {
 		return String.format("%s, %s, %s, %s, %s, %s", 
-				saleNo,	client, softWare, sellingAmount, isDeposit, orderDate);
+				saleNo.get(), clientName.get(), softWareName.get(), 
+				sellingAmount.get(), isDeposit.get(), orderDate.get());
 	}
 	
 	//
@@ -52,25 +53,25 @@ public class SaleData {
 	}
 	
 	//
-	public Client getClient() {
-		return client.get();
+	public String getClient() {
+		return clientName.get();
 	}
-	public ObjectProperty<Client> ClientProperty(){
-		return client;
+	public StringProperty ClientProperty(){
+		return clientName;
 	}
-	public void setClient(Client client) {
-		this.client.set(client);
+	public void setClient(String clientName) {
+		this.clientName.set(clientName);
 	}
 
 	//
-	public SoftWare getSoftWare() {
-		return softWare.get();
+	public String getSoftWare() {
+		return softWareName.get();
 	}
-	public ObjectProperty<SoftWare> SoftWareProperty(){
-		return softWare;
+	public StringProperty SoftWareProperty(){
+		return softWareName;
 	}
-	public void setSoftWare(SoftWare softWare) {
-		this.softWare.set(softWare);
+	public void setSoftWare(String softWareName) {
+		this.softWareName.set(softWareName);
 	}
 
 	//

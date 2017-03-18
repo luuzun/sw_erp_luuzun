@@ -7,21 +7,21 @@ import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import kr.or.dgit.sw_erp_luuzun.dto.Client;
+import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
+import kr.or.dgit.sw_erp_luuzun.dto.SoftWare;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import kr.or.dgit.sw_erp_luuzun.model.Client;
-import kr.or.dgit.sw_erp_luuzun.model.SaleData;
-import kr.or.dgit.sw_erp_luuzun.model.SoftWare;
 
 public class ControlSales {
 	@FXML private TableView<SaleData> saleTable;
 	@FXML private TableColumn<SaleData, String> saleNoColumn;
-	@FXML private TableColumn<SaleData, Client> clntNameColumn;
-	@FXML private TableColumn<SaleData, SoftWare> swNameColumn;
+	@FXML private TableColumn<SaleData, String> clntNameColumn;
+	@FXML private TableColumn<SaleData, String> swNameColumn;
 	@FXML private TableColumn<SaleData, Integer> sellingAmountColumn;
 	@FXML private TableColumn<SaleData, Boolean> isDepositColumn;
 	@FXML private TableColumn<SaleData, LocalDate> orderDateColumn;
@@ -68,8 +68,8 @@ public class ControlSales {
     private void fillContent(SaleData saleData) { // 입력창에 선택값 입력
         if (saleData != null) {
         	saleNoTf.setText(saleData.getSaleNo()); 
-        	clntNameCb.setValue(saleData.getClient().getClntName());
-        	swNameCb.setValue(saleData.getSoftWare().getSwName());
+        	clntNameCb.setValue(saleData.getClient());
+        	swNameCb.setValue(saleData.getSoftWare());
         	sellingAmountTf.setText(String.valueOf(saleData.getSellingAmount())); 
         	orderDateDp.setValue(saleData.getOrderDate());
         	isDepositCh.setSelected(saleData.getIsDeposit());
@@ -105,12 +105,12 @@ public class ControlSales {
     	if (isValid()) {
     		SaleData inputSale = new SaleData(
     				saleNoTf.getText(),
-    				new Client(clntNameCb.getValue()),
-    				new SoftWare(swNameCb.getValue()),
+    				clntNameCb.getValue(),
+    				swNameCb.getValue(),
     				Integer.parseInt(sellingAmountTf.getText()),
     				isDepositCh.isSelected(),
     				orderDateDp.getValue()
-    				); 
+    		); 
     		viewSales.getSaleDataList().add(inputSale);
     	}
     }

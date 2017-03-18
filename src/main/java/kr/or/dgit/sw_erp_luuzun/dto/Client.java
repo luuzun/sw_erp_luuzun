@@ -1,4 +1,4 @@
-package kr.or.dgit.sw_erp_luuzun.model;
+package kr.or.dgit.sw_erp_luuzun.dto;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

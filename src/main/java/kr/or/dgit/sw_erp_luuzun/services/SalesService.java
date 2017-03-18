@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
 import kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper;
 import kr.or.dgit.sw_erp_luuzun.mapper.SalesMapperImpl;
-import kr.or.dgit.sw_erp_luuzun.model.SaleData;
 import kr.or.dgit.sw_erp_luuzun.util.MyBatisSqlSessionFactory;
 
 

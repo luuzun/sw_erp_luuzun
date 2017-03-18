@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper">
+<mapper	namespace="kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper">
     
     <!-- Select SQL -->
     <sql id="selectSql">
-		select STUD_ID, NAME, EMAIL, PHONE, DOB from students
+		SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate 
+		FROM sale s JOIN client c ON s.clntNo = c.clntNo
+		JOIN software sw ON s.swNo = sw.swNo
 	</sql>
 
 	<!-- Where SQL -->
 	<sql id="whereSql">
 		<where>
-			<if test="studId != null">
-				stud_id=#{studId}
+			<if test="saleNo != null">
+				saleNo=#{saleNo}
 			</if>
 		</where>
 	</sql>
+
+	    
+    <!-- Select Sales By All --> 
+    <select id="selectSalesByAll" resultType="SaleData">
+    	<include refid="selectSql" />
+    	ORDER BY saleNo;
+    </select>
 
 	<!-- Insert Sales -->
 	<insert id="insertSales" parameterType="SaleData">
         INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB) 
         VALUES(#{studId}, #{name}, #{email}, #{phone}, #{dob})
     </insert>
-    
-    <!-- Select Sales By All   
-		SELECT saleNo, clntName, swName, sellingAmount, isDeposit, orderDate FROM sale s, client c, software sw
-		WHERE s.clntNo = c.clntNo AND s.swNo = sw.swNo ORDER BY saleNo; --> 
-    <select id="selectSalesByAll" parameterType="SaleData" resultType="SaleData">
-    	<include refid="selectSql" />
-    </select>
+
     
 	<!-- Select Sales By Where-->
 	<select id="select" parameterType="SaleData" resultType="SaleData">
@@ -46,4 +48,6 @@
 	<delete id="deleteStudent" parameterType="SaleData">
     	Delete From Students where  STUD_ID=#{studId}
     </delete>
+
 </mapper>
+

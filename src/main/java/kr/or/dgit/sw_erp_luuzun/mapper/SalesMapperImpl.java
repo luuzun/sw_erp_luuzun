@@ -6,11 +6,11 @@ import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.dgit.sw_erp_luuzun.model.SaleData;
+import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
 
 public class SalesMapperImpl implements SalesMapper{
 
-	private String nameSpace = ".kr.or.dgit.sw_erp_luuzun.dao.SalesMapper"; //SalesMapper.xml의 namespace
+	private String nameSpace = "kr.or.dgit.sw_erp_luuzun.mapper.SalesMapper."; //SalesMapper.xml의 namespace
 	private SqlSession sqlSession;
 	private static final Log log = LogFactory.getLog(SalesMapperImpl.class);
 	
@@ -22,7 +22,6 @@ public class SalesMapperImpl implements SalesMapper{
 		log.debug("insertSales()");
 		return sqlSession.insert(nameSpace+"insertSales", saleData);
 	}
-
 	@Override
 	public SaleData selectSales(SaleData saleData) {
 		log.debug("selectSales()");
