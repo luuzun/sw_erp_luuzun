@@ -4,18 +4,17 @@ import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import kr.or.dgit.sw_erp_luuzun.dto.Client;
-import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
-import kr.or.dgit.sw_erp_luuzun.dto.SoftWare;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
+import kr.or.dgit.sw_erp_luuzun.services.SalesService;
 
 public class ControlSales {
 	@FXML private TableView<SaleData> saleTable;
@@ -42,8 +41,8 @@ public class ControlSales {
 	private void initialize() {  
 		//Column 초기화
 		saleNoColumn.setCellValueFactory(cellData 	-> cellData.getValue().SaleNoProperty());
-		clntNameColumn.setCellValueFactory(cellData -> cellData.getValue().ClientProperty());
-		swNameColumn.setCellValueFactory(cellData 	-> cellData.getValue().SoftWareProperty());
+		clntNameColumn.setCellValueFactory(cellData -> cellData.getValue().ClntNameProperty());
+		swNameColumn.setCellValueFactory(cellData 	-> cellData.getValue().swNameProperty());
 		sellingAmountColumn.setCellValueFactory(cellData -> cellData.getValue().SellingAmountProperty().asObject());
 		isDepositColumn.setCellValueFactory(cellData -> cellData.getValue().IsDepositProperty());
 		orderDateColumn.setCellValueFactory(cellData -> cellData.getValue().OrderDateProperty());
@@ -61,15 +60,24 @@ public class ControlSales {
 	// 테이블에 데이터를 추가
     public void setViewSales(ViewSales viewSales) {
     	this.viewSales = viewSales;
-    	saleTable.setItems(viewSales.getSaleDataList());
+    	saleTable.setItems(loadTable());
+    }
+    
+    //Load Table Method
+    public ObservableList<SaleData> loadTable(){
+    	SalesService salesService = new SalesService();
+    	ObservableList<SaleData> lists = FXCollections.observableArrayList();
+    	lists.addAll(salesService.selectSalesByAll());
+    	return lists;
     }
     
     //saleNoTf clntNameCb swNameCb sellingAmountTf orderDateDp isDepositCh
-    private void fillContent(SaleData saleData) { // 입력창에 선택값 입력
+    //입력창에 선택한 Row의 값 입력
+    private void fillContent(SaleData saleData) { 
         if (saleData != null) {
         	saleNoTf.setText(saleData.getSaleNo()); 
-        	clntNameCb.setValue(saleData.getClient());
-        	swNameCb.setValue(saleData.getSoftWare());
+        	clntNameCb.setValue(saleData.getClntName());
+        	swNameCb.setValue(saleData.getswName());
         	sellingAmountTf.setText(String.valueOf(saleData.getSellingAmount())); 
         	orderDateDp.setValue(saleData.getOrderDate());
         	isDepositCh.setSelected(saleData.getIsDeposit());

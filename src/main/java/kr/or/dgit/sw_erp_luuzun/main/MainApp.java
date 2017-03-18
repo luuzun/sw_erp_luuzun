@@ -17,12 +17,6 @@ public class MainApp extends Application{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Software Management App");
         ViewSales viewSales = new ViewSales(primaryStage);
-        
-        SalesService ss = new SalesService();
-        List<SaleData> resultList = ss.selectSalesByAll();
-        for (SaleData saleData : resultList) {
-			System.out.println(saleData);
-		}
 	}
 
 	public Stage getPrimaryStage() {

@@ -13,22 +13,22 @@ import javafx.beans.property.StringProperty;
 
 public class SaleData {
 	private final StringProperty saleNo;
-	private final StringProperty clientName;
-	private final StringProperty softWareName;
+	private StringProperty clntName;
+	private final StringProperty swName;
 	private final IntegerProperty sellingAmount;
 	private final BooleanProperty isDeposit;
 	private final ObjectProperty<LocalDate> orderDate;
 	
 	public SaleData() {
-		this(null, null, null, 0, false, null);
+		this("1", "1", null, 0, false, null);
 	}
 
-	public SaleData(String saleNo, String clientName, String softWareName,
+	public SaleData(String saleNo, String clntName, String swName,
 			int sellingAmount, boolean isDeposit, LocalDate orderDate) {
 		
 		this.saleNo 		= new SimpleStringProperty(saleNo);
-		this.clientName 	= new SimpleStringProperty(clientName);
-		this.softWareName 	= new SimpleStringProperty(softWareName);
+		this.clntName 	= new SimpleStringProperty(clntName);
+		this.swName 	= new SimpleStringProperty(swName);
 		this.sellingAmount 	= new SimpleIntegerProperty(sellingAmount);
 		this.isDeposit 		= new SimpleBooleanProperty(isDeposit);
 		this.orderDate 		= new SimpleObjectProperty<LocalDate>(orderDate);
@@ -37,7 +37,7 @@ public class SaleData {
 	@Override
 	public String toString() {
 		return String.format("%s, %s, %s, %s, %s, %s", 
-				saleNo.get(), clientName.get(), softWareName.get(), 
+				saleNo.get(), clntName.get(), swName.get(), 
 				sellingAmount.get(), isDeposit.get(), orderDate.get());
 	}
 	
@@ -53,25 +53,25 @@ public class SaleData {
 	}
 	
 	//
-	public String getClient() {
-		return clientName.get();
+	public String getClntName() {
+		return clntName.get();
 	}
-	public StringProperty ClientProperty(){
-		return clientName;
+	public StringProperty ClntNameProperty(){
+		return clntName;
 	}
-	public void setClient(String clientName) {
-		this.clientName.set(clientName);
+	public void setClntName(String clntName) {
+		this.clntName.set(clntName);
 	}
 
 	//
-	public String getSoftWare() {
-		return softWareName.get();
+	public String getswName() {
+		return swName.get();
 	}
-	public StringProperty SoftWareProperty(){
-		return softWareName;
+	public StringProperty swNameProperty(){
+		return swName;
 	}
-	public void setSoftWare(String softWareName) {
-		this.softWareName.set(softWareName);
+	public void setswName(String swName) {
+		this.swName.set(swName);
 	}
 
 	//

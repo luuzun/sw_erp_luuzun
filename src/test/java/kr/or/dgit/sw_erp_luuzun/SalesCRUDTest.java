@@ -28,6 +28,9 @@ public class SalesCRUDTest {
 	@Test //selectSalesByAll Test
 	public void testselectSalesByAll(){
 		List<SaleData> lists = salesService.selectSalesByAll();
+		for (SaleData saleData : lists) {
+			System.out.println(saleData);
+		}
 		List<SaleData> emptyList = Collections.emptyList();
 		Assert.assertNotEquals(emptyList, lists);
 	}
