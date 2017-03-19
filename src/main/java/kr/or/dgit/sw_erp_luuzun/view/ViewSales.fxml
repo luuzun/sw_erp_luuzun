@@ -97,7 +97,7 @@
     </Tab>
     <Tab text="고객별 판매현황">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+		 <fx:include fx:id="TestTab" source="TestTab.fxml"/>
       </content>
     </Tab>
       <Tab text="S/W별 판매현황">
