@@ -134,3 +134,40 @@ SELECT * FROM sale;
 SELECT * FROM software;
 SELECT * FROM supply_company;
 SELECT * FROM client;
+
+
+/* * * * * * * * * * * * * * * * * * * TRIGGER * * * * * * * * * * * * * * * * * * */
+
+DROP TABLE sale_detail;
+DROP TRIGGER tri_sale_insert_after;
+
+CREATE TABLE sale_detail(
+   saleNo 		VARCHAR(6),
+   sellingPrice INTEGER,
+   supplyPrice 	INTEGER,
+   salePrice 	INTEGER,
+   outstanding 	INTEGER,
+   tax 			INTEGER,
+   totalPrice 	INTEGER
+);
+
+CREATE TRIGGER tri_sale_insert_after
+AFTER INSERT ON sale
+FOR EACH ROW 
+BEGIN SET
+	/*판매 금액*/	@sellingPrice	= (SELECT swPrice FROM software s WHERE s.swNo=NEW.swNo) * NEW.sellingAmount,
+	/*공급 금액*/	@supplyPrice	= (SELECT swSupplyPrice FROM software s WHERE s.swNo=NEW.swNo) * NEW.sellingAmount,
+	/*매출금*/		@salePrice 		= @sellingPrice - @supplyPrice,
+	/*미수금*/		@outstanding 	= @sellingPrice * NEW.isDeposit,
+	/*세금*/		@tax 			= @sellingPrice * 0.1,
+	/*총 납부금액*/	@totalPrice 	= @sellingPrice + @tax
+	INSERT INTO sale_detail VALUES (NEW.saleNo, @sellingPrice, @supplyPrice, @salePrice, @outstanding, @tax, @totalPrice);
+END ;
+
+sale은 거래내역.
+거래 후에 sale에 데이터가 입력됨.
+sale(sale_detail)에 데이터가 입력된 후에는 software의 값(단가, 공급금액)이 변할 때
+	->	sale(sale_detail)의 데이터가 변하지 않아야함.
+	
+	
+/* * * * * * * * * * * * * * * * * * * E  N  D * * * * * * * * * * * * * * * * * * */

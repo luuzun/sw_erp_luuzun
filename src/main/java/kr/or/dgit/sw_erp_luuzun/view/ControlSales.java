@@ -60,6 +60,7 @@ public class ControlSales {
 	// 테이블에 데이터를 추가
     public void setViewSales(ViewSales viewSales) {
     	this.viewSales = viewSales;
+    	System.out.println("get this");
     	saleTable.setItems(loadTable());
     }
     
@@ -67,7 +68,7 @@ public class ControlSales {
     public ObservableList<SaleData> loadTable(){
     	SalesService salesService = new SalesService();
     	ObservableList<SaleData> lists = FXCollections.observableArrayList();
-    	lists.addAll(salesService.selectSalesByAll());
+    	lists.addAll(salesService.selectSalesByAll()); //DB에서 값을 가져옴
     	return lists;
     }
     
@@ -119,6 +120,7 @@ public class ControlSales {
     				isDepositCh.isSelected(),
     				orderDateDp.getValue()
     		); 
+    		System.out.println(viewSales);
     		viewSales.getSaleDataList().add(inputSale);
     	}
     }
