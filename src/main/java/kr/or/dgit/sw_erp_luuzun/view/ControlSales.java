@@ -46,21 +46,27 @@ public class ControlSales {
 		sellingAmountColumn.setCellValueFactory(cellData -> cellData.getValue().SellingAmountProperty().asObject());
 		isDepositColumn.setCellValueFactory(cellData -> cellData.getValue().IsDepositProperty());
 		orderDateColumn.setCellValueFactory(cellData -> cellData.getValue().OrderDateProperty());
+		
+		System.out.println("initialize.viewSales: " + viewSales);
 
 		//Content를 선택한 row로 채움
 		fillContent(null);
 		saleTable.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> fillContent(newValue));
 
-		//For Test
+		//for Test
 		clntNameCb.getItems().addAll("이승우","이교민","조시은");
 		swNameCb.getItems().addAll("OverWatch","LoL","BloodWar");
 	}
 	
 	// 테이블에 데이터를 추가
     public void setViewSales(ViewSales viewSales) {
+		System.out.println("before SetView.viewSales: " + this.viewSales);
     	this.viewSales = viewSales;
+		System.out.println("after SetView.viewSales: " + this.viewSales);
     	saleTable.setItems(loadTable());
+		System.out.println("after SetItems.viewSales: " + this.viewSales);
+
     }
     
     //Load Table Method
@@ -105,6 +111,7 @@ public class ControlSales {
    
     @FXML
     private void handleCancel() {
+		System.out.println("clear.viewSales: " + viewSales);
     	clearContent();
     }
 
@@ -126,6 +133,8 @@ public class ControlSales {
 
     //빈 입력창이 있는지 확인
     private boolean isValid() {
+		System.out.println("isValid.viewSales: " + this.viewSales);
+
     	String message = "";
     	if(saleNoTf.getText() == null || saleNoTf.getText().length() == 0) {
     		message += "주문번호를 입력해주세요!\n";

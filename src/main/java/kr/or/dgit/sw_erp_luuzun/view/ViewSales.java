@@ -8,10 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import kr.or.dgit.sw_erp_luuzun.dto.Client;
 import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
-import kr.or.dgit.sw_erp_luuzun.dto.SoftWare;
 
 public class ViewSales{
 	private Stage primaryStage;
@@ -54,8 +53,13 @@ public class ViewSales{
 			
 			rootLayout.setCenter(viewSalesTab); //ViewSales를 rootLayout의 Center에 추가
 			
-			ControlSales controller = loader.getController();
-	        controller.setViewSales(this);
+			FXMLLoader loader2 = new FXMLLoader();
+			loader2.setLocation(ViewSales.class.getResource("TestTab.fxml"));
+			GridPane TestTab = (GridPane)loader2.load();
+			ControlSales controller = loader2.getController();
+			controller.setViewSales(this);
+			
+			System.out.println("load.this: " + this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -66,6 +70,7 @@ public class ViewSales{
     }
 
 	public ObservableList<SaleData> getSaleDataList() {
+		System.out.println("getSaleDataList.this: " + this);
 		return saleDataList;
 	}
 }
