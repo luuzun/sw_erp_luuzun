@@ -62,7 +62,7 @@ public class ViewSales{
 			
 			ControlSales controller = loader2.getController();
 	        controller.setViewSales(this);
-	        System.out.println("give this");
+	        System.out.println("this: "+ this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	

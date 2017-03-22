@@ -32,7 +32,7 @@ public class ControlSales {
 	@FXML private DatePicker orderDateDp;
 	@FXML private CheckBox isDepositCh;
 	
-    private ViewSales viewSales;
+    ViewSales viewSales;
 
 	public ControlSales() {}
 
@@ -40,6 +40,7 @@ public class ControlSales {
 	//fxml 로드 후 자동 호출
 	private void initialize() {  
 		//Column 초기화
+		System.out.println(viewSales);
 		saleNoColumn.setCellValueFactory(cellData 	-> cellData.getValue().SaleNoProperty());
 		clntNameColumn.setCellValueFactory(cellData -> cellData.getValue().ClntNameProperty());
 		swNameColumn.setCellValueFactory(cellData 	-> cellData.getValue().swNameProperty());
@@ -60,7 +61,7 @@ public class ControlSales {
 	// 테이블에 데이터를 추가
     public void setViewSales(ViewSales viewSales) {
     	this.viewSales = viewSales;
-    	System.out.println("get this");
+    	System.out.println("get this viewSales: " + this.viewSales);
     	saleTable.setItems(loadTable());
     }
     
@@ -95,6 +96,7 @@ public class ControlSales {
     	sellingAmountTf.clear();
     	orderDateDp.setValue(null);
     	isDepositCh.setSelected(false);
+		System.out.println("viewSales: " + viewSales);
     }
     
     /************************ Event Handler ****************************/
@@ -106,12 +108,15 @@ public class ControlSales {
    
     @FXML
     private void handleCancel() {
+		System.out.println("viewSales: " + viewSales);
     	clearContent();
     }
 
     @FXML
     private void handleOk() {
-    	if (isValid()) {
+		System.out.println("viewSales: " + viewSales);
+
+		if (isValid()) {
     		SaleData inputSale = new SaleData(
     				saleNoTf.getText(),
     				clntNameCb.getValue(),
@@ -120,7 +125,7 @@ public class ControlSales {
     				isDepositCh.isSelected(),
     				orderDateDp.getValue()
     		); 
-    		System.out.println(viewSales);
+    		System.out.println("viewSales: " + viewSales);
     		viewSales.getSaleDataList().add(inputSale);
     	}
     }
