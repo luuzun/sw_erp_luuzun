@@ -9,9 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import kr.or.dgit.sw_erp_luuzun.dto.Client;
 import kr.or.dgit.sw_erp_luuzun.dto.SaleData;
-import kr.or.dgit.sw_erp_luuzun.dto.SoftWare;
 
 public class ViewSales{
 	private Stage primaryStage;
